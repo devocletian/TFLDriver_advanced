@@ -30,48 +30,63 @@ import java.util.ArrayList;
 public class linesactivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private RequestQueue mQueue;
     //Global declaration
-    String linename,result;
+    String linename, result;
     Spinner spinner;
     TextView spinnerview;
 
     @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_lines);
-            TextView mTextview = findViewById(R.id.lines);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_lines);
+        TextView mTextview = findViewById(R.id.lines);
 
-            //Uline will change to each specific line
-            Intent intent = getIntent();
-            linename = intent.getStringExtra("Uline");
+        //Uline will change to each specific line
+        Intent intent = getIntent();
+        linename = intent.getStringExtra("Uline");
 
-            //Produces title
-            String Title = linename;
-            Title = Title.replaceAll("_", " ");
-            mTextview.setText(Title + " Line");
-
-
-            //call on different arrays
-            Intent b = getIntent();
-            int a = b.getIntExtra("Ustation",-1);
-
-            //spinner
-            spinner = findViewById(R.id.spinner);
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, a, android.R.layout.simple_spinner_item);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner.setOnItemSelectedListener(this);
-            spinner.setAdapter(adapter);
+        //Produces title
+        String Title = linename;
+        Title = Title.replaceAll("_", " ");
+        mTextview.setText(Title + " Line");
 
 
-            mQueue = Volley.newRequestQueue(this);
-            //the parse is the update button
-            Button button_parse = findViewById(R.id.button_parse);
-            //when the button is clicked run the following method
-            button_parse.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    jsonParse();
+        //call on different arrays
+        Intent b = getIntent();
+        int a = b.getIntExtra("Ustation", -1);
+
+        //spinner
+        spinner = findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, a, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setOnItemSelectedListener(this);
+        spinner.setAdapter(adapter);
+
+        //json capture
+        mQueue = Volley.newRequestQueue(this);
+        //the parse is the update button
+        Button button_parse = findViewById(R.id.button_parse);
+        //when the button is clicked run the following method
+        button_parse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jsonParse();
             }
         });
+    }
+
+
+    @Override
+    public void onItemSelected(final AdapterView<?> parent, View view, int i, long l) {
+        //String stations = parent.getItemAtPositon(position).toString();
+        //toast.makeText(parent.getContext(),stations, Toast.LENGTH_SHORT).show();
+        result = spinner.getSelectedItem().toString();
+        spinnerview = findViewById(R.id.spinnerview);
+        spinnerview.setText(result);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 
     private void jsonParse() {
@@ -82,6 +97,7 @@ public class linesactivity extends AppCompatActivity implements AdapterView.OnIt
             public void onResponse(JSONArray response) {
                 //the user enters the train number
                 EditText train_number;
+
                 train_number = findViewById(R.id.train_number);
                 String str = train_number.getText().toString();
                 String sta = spinnerview.getText().toString();
@@ -91,16 +107,17 @@ public class linesactivity extends AppCompatActivity implements AdapterView.OnIt
                     mTextViewResult = findViewById(R.id.text_view_result);
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject x = response.getJSONObject(i);
-
                         vehicleId = x.getString("vehicleId");
-                        String currentLocation = x.getString("currentLocation");
-                        String towards = x.getString("towards");
+                        String stationName = x.getString("stationName");
+                        String destinationName = x.getString("towards");
                         Integer timeToStation = x.getInt("timeToStation");
-
                         if (vehicleId.equals(str)) {
                             vehicleId = str;
-                            mTextViewResult.append(vehicleId + ", " + currentLocation + " going to " + towards + " in " + timeToStation / 60 + " minutes" + "\n\n");
-                        }
+                            mTextViewResult.append(vehicleId + "\n" + "Currently at " + stationName + " going to " + destinationName + " in " + timeToStation / 60 + " minutes" + "\n\n");
+                        } else if (vehicleId.equals(result)) {
+                                destinationName = result;
+                                mTextViewResult.append(vehicleId + "\n" + "To" + destinationName + " from" + stationName + " in " + timeToStation / 60 + " minutes" + "\n\n");
+                            }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -114,19 +131,6 @@ public class linesactivity extends AppCompatActivity implements AdapterView.OnIt
         });
         mQueue.add(request);
     }
-    @Override
-    public void onItemSelected(final AdapterView<?> parent,View view, int i, long l) {
-        //String stations = parent.getItemAtPositon(position).toString();
-        //toast.makeText(parent.getContext(),stations, Toast.LENGTH_SHORT).show();
-        result = spinner.getSelectedItem().toString();
-        spinnerview = (TextView)findViewById(R.id.spinnerview);
-        spinnerview.setText(result);
-    }
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-    }
 }
-
-
 
 
