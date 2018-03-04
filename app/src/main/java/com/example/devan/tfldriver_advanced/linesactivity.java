@@ -23,8 +23,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class linesactivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -72,6 +75,7 @@ public class linesactivity extends AppCompatActivity implements AdapterView.OnIt
                 jsonParse();
             }
         });
+
     }
 
 
@@ -97,30 +101,43 @@ public class linesactivity extends AppCompatActivity implements AdapterView.OnIt
             public void onResponse(JSONArray response) {
                 //the user enters the train number
                 EditText train_number;
+                TextView mTextViewResult;
 
                 train_number = findViewById(R.id.train_number);
                 String str = train_number.getText().toString();
                 String sta = spinnerview.getText().toString();
                 String vehicleId;
+                mTextViewResult = findViewById(R.id.text_view_result);
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+                String currentDateandTime = sdf.format(new Date());
+                mTextViewResult.setText("");
                 try {
-                    TextView mTextViewResult;
-                    mTextViewResult = findViewById(R.id.text_view_result);
+                    mTextViewResult.setText("");
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject x = response.getJSONObject(i);
                         vehicleId = x.getString("vehicleId");
+                        String currentLocation = x.getString("currentLocation");
+                        String platformName = x.getString("platformName");
+
                         String stationName = x.getString("stationName");
+                        String towards = x.getString("towards");
                         String destinationName = x.getString("destinationName");
                         Integer timeToStation = x.getInt("timeToStation");
-                        if (vehicleId.equals(str)) {
-                            vehicleId = str;
-                            mTextViewResult.append(vehicleId + "\n" + "Currently at " + stationName + " going to " + destinationName + " in " + timeToStation / 60 + " minutes" + "\n\n");
-                        } else if (destinationName.equals(sta)) {
-                                destinationName = sta;
-                                mTextViewResult.append(vehicleId + "\n" + "Train to " + destinationName + "\n" +  "from " + stationName + "\n" +  " will arrive in " + timeToStation / 60 + " minutes" + "\n\n");
+                        String expectedArrival = x.getString("expectedArrival");
+
+                             if (stationName.equals(sta))  {
+                                 if (vehicleId.equals(str))
+
+                                 expectedArrival = expectedArrival.replaceAll("T", " ");
+
+                                mTextViewResult.append("Train: "+vehicleId + "\n" +"Location: " + currentLocation + "\n" + "Direction: " + platformName + "\n" + "Destination: "+ towards + "\n" + timeToStation / 60 + " minutes away at " + currentDateandTime+ "\n\n");
                             }
+
                     }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
+
                 }
             }
         }, new Response.ErrorListener() {
@@ -130,6 +147,7 @@ public class linesactivity extends AppCompatActivity implements AdapterView.OnIt
             }
         });
         mQueue.add(request);
+
     }
 }
 
