@@ -130,7 +130,6 @@
         <item>Notting Hill Gate Underground Station</item>,
         <item>Bayswater Underground Station</item>,
         <item>Paddington Underground Station</item>,
-        <item>Edgware Road Underground Station</item>,
         <item>Baker Street Underground Station</item>,
         <item>Great Portland Street Underground Station</item>,
         <item>Euston Square Underground Station</item>,
@@ -139,6 +138,9 @@
         <item>Barbican Underground Station</item>,
         <item>Moorgate Underground Station</item>,
         <item>Liverpool Street Underground Station</item>,
+        //this one
+        <item>Hammersmith (H&amp;C Line) Underground Station</item>,
+        <item>Edgware Road (Circle Line) Underground Station</item>,
 
     </string-array>
 

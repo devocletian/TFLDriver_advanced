@@ -60,9 +60,14 @@ public class MainActivity extends AppCompatActivity {
     public void openmetropolitan(View view) {
         Intent openmetropolitan = new Intent(MainActivity.this, linesactivity.class);
         openmetropolitan.putExtra("Uline", "Metropolitan");
-        openmetropolitan.putExtra ("Ustation",R.array.metropolitanstations);
-
+        openmetropolitan.putExtra("Ustation", R.array.metropolitanstations);
         startActivity(openmetropolitan);
+    }
+    public void opennorthern(View view) {
+        Intent opennorthern = new Intent(MainActivity.this, linesactivity.class);
+        opennorthern.putExtra("Uline", "Northern");
+        opennorthern.putExtra ("Ustation",R.array.northernstations);
+        startActivity(opennorthern);
     }
     public void openpiccadilly(View view) {
         Intent openpiccadilly = new Intent(MainActivity.this, linesactivity.class);
@@ -76,10 +81,5 @@ public class MainActivity extends AppCompatActivity {
         openvictoria.putExtra ("Ustation",R.array.victoriastations);
         startActivity(openvictoria);
     }
-    public void opennorthern(View view) {
-        Intent opennorthern = new Intent(MainActivity.this, linesactivity.class);
-        opennorthern.putExtra("Uline", "Northern");
-        opennorthern.putExtra ("Ustation",R.array.northernstations);
-        startActivity(opennorthern);
-    }
+
 }

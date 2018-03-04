@@ -116,7 +116,7 @@ public class linesactivity extends AppCompatActivity implements AdapterView.OnIt
                             mTextViewResult.append(vehicleId + "\n" + "Currently at " + stationName + " going to " + destinationName + " in " + timeToStation / 60 + " minutes" + "\n\n");
                         } else if (destinationName.equals(sta)) {
                                 destinationName = sta;
-                                mTextViewResult.append(vehicleId + "\n" + " Train to " + destinationName + "\n" +  "from " + stationName + "\n" +  " will arrive in " + timeToStation / 60 + " minutes" + "\n\n");
+                                mTextViewResult.append(vehicleId + "\n" + "Train to " + destinationName + "\n" +  "from " + stationName + "\n" +  " will arrive in " + timeToStation / 60 + " minutes" + "\n\n");
                             }
                     }
                 } catch (JSONException e) {
