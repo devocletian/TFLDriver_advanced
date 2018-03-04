@@ -76,13 +76,6 @@ public class MainActivity extends AppCompatActivity {
         openvictoria.putExtra ("Ustation",R.array.victoriastations);
         startActivity(openvictoria);
     }
-  /*  public void openwaterloo_and_city(View view) {
-        Intent openwaterloo_and_city = new Intent(MainActivity.this, linesactivity.class);
-        openwaterloo_and_city.putExtra("Uline", "Waterloo_and_City");
-
-        startActivity(openwaterloo_and_city);
-    }waterloo-city*/
-
     public void opennorthern(View view) {
         Intent opennorthern = new Intent(MainActivity.this, linesactivity.class);
         opennorthern.putExtra("Uline", "Northern");

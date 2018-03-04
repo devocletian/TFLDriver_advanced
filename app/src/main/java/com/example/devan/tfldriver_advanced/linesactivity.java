@@ -93,18 +93,14 @@ public class linesactivity extends AppCompatActivity implements AdapterView.OnIt
                         JSONObject x = response.getJSONObject(i);
 
                         vehicleId = x.getString("vehicleId");
-                        if (vehicleId.equals(str)){
-                          mTextViewResult.append(vehicleId);
-
-                        }
-
-                        Integer timeToStation = x.getInt("timeToStation");
-                        String towards = x.getString("towards");
                         String currentLocation = x.getString("currentLocation");
+                        String towards = x.getString("towards");
+                        Integer timeToStation = x.getInt("timeToStation");
 
-                        mTextViewResult.append("Train Number " + str + "\n" + "Currently " + currentLocation + "\n" + "Arriving " + towards + "\n" + "in " + timeToStation/60+ " Minutes " + "\n\n\n");
-
-
+                        if (vehicleId.equals(str)) {
+                            vehicleId = str;
+                            mTextViewResult.append(vehicleId + ", " + currentLocation + " going to " + towards + " in " + timeToStation / 60 + " minutes" + "\n\n");
+                        }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
