@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.devan.tfldriver_advanced.MainActivity">
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#000000" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:src="@drawable/tfldriverlogov2" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#000000" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#cacaca"
+        android:text=" Underground Lines"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#000000" />
+    <Button
+        android:id="@+id/b_bakerloo"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#994f14"
+        android:textColor="#ffffff"
+        android:text="bakerloo"
+        android:onClick="openbakerloo"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#000000" />
+    <Button
+        android:id="@+id/b_central"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#d42e12"
+        android:textColor="#ffffff"
+        android:text="central"
+        android:onClick="opencentral"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#000000" />
+    <Button
+        android:id="@+id/b_circle"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="circle"
+        android:background="#f7d117"
+        android:onClick="opencircle" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#000000" />
+    <Button
+        android:id="@+id/b_district"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="district"
+        android:background="#007336"
+        android:textColor="#ffffff"
+        android:onClick="opendistrict"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#000000" />
+    <Button
+        android:id="@+id/b_hammersmith_and_city"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="hammersmith and city"
+        android:background="#eb9ca8"
+        android:onClick="openhammersmith_and_city"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#000000" />
+    <Button
+        android:id="@+id/b_jubilee"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="jubilee"
+        android:background=" #8c8f91"
+        android:textColor="#ffffff"
+        android:onClick="openjubilee"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#000000" />
+    <Button
+        android:id="@+id/metropolitan"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="  #8a004f "
+        android:text="metropolitan"
+        android:textColor="#ffffff"
+        android:onClick="openmetropolitan"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#000000" />
+    <Button
+        android:id="@+id/b_northern"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="northern"
+        android:background="  #000000 "
+        android:textColor="#ffffff"
+        android:onClick="opennorthern"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#000000" />
+    <Button
+        android:id="@+id/piccadilly"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="piccadilly"
+        android:background="#2905a1"
+        android:textColor="#ffffff"
+        android:onClick="openpiccadilly"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#000000" />
+    <Button
+        android:id="@+id/victoria"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="victoria"
+        android:background="#00a3e0"
+        android:onClick="openvictoria"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#000000" />
+
+
+</LinearLayout>
+
+
