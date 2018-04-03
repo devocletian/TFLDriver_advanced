@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         openbakerloointent.putExtra ("Ustation",R.array.bakerloostations);
         startActivity(openbakerloointent);
         //array
-
     }
     public void opencentral(View view) {
         Intent opencentralintent = new Intent(MainActivity.this, linesactivity.class);
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void opendistrict(View view) {
         Intent opendistrictlintent = new Intent(MainActivity.this, linesactivity.class);
-        opendistrictlintent.putExtra("Uline", "District");
+        opendistrictlintent.putExtra("Uline", "district");
         opendistrictlintent.putExtra ("Ustation",R.array.distictstations);
         startActivity(opendistrictlintent);
     }

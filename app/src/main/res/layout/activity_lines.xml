@@ -5,13 +5,10 @@
     android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical">
-
-
     <View
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:background="#000000" />
-
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
@@ -22,7 +19,6 @@ android:orientation="vertical">
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:background="#000000" />
-
     <TextView
     android:id="@+id/lines"
     android:layout_width="match_parent"
@@ -90,8 +86,7 @@ android:orientation="vertical">
     android:id="@+id/button_parse"
     android:layout_width="match_parent"
     android:layout_height="40dp"
-    android:text="update"
-    />
+    android:text="update"   />
     <View
         android:layout_width="match_parent"
         android:layout_height="5dp"
